@@ -1,11 +1,14 @@
 {
-  "name": "expressnotetaker",
+  "name": "note-taker",
   "version": "1.0.0",
-  "description": "Module 11 Express.js Note Taker",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": " \"echo \\\"Error: no test specified\\\" && exit 1\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
