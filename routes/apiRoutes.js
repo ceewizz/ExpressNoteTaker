@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 // package allow a unique path name to be created   
-var uniqname = require('uniqname');
+var uniqid = require('uniqid');
 
 module.exports = (app) => {
 
@@ -24,7 +24,7 @@ module.exports = (app) => {
             title: req.body.title,
             text: req.body.text,
             // The note create
-            name: uniqname(),
+            id: uniqid(),
         };
 
         // Push created note over to db.json file
@@ -40,7 +40,7 @@ module.exports = (app) => {
 
             // removing the name of the file
 
-            let deleteNotes = db.filter(item => item.name !== req.params.name);
+            let deleteNotes = db.filter(item => item.id !== req.params.id);
 
             // Then write the new notes to the db.json file
             fs.writeFileSync('db/db.json', JSON.stringify(deleteNotes));
