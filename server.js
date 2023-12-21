@@ -33,13 +33,13 @@ module.exports = (app) => {
         if (error) throw error;
         let dbData = JSON.parse(data);
         res.json(dbData);
-, });
+ });
         // Create a new note
           const userNote = req.body 
           userNote.id = uniqid()
             // The note create
             id: uniqid(),
-    };
+    
         // Push created note over to db.json file
         db.push(userNote);
         fs.writeFileSync('./db/db.json', JSON.stringify(db));
@@ -93,13 +93,13 @@ module.exports = (app) => {
         if (error) throw error;
         let dbData = JSON.parse(data);
         res.json(dbData);
-, });
+ });
         // Create a new note
           const userNote = req.body 
           userNote.id = uniqid()
             // The note create
             id: uniqid(),
-    };
+    
         // Push created note over to db.json file
         db.push(userNote);
         fs.writeFileSync('./db/db.json', JSON.stringify(db));
@@ -130,5 +130,7 @@ module.exports = (app) => {
 app.listen(PORT, () => {
     console.log(`Server available at localhost:${PORT}`);
 
-});
 
+})
+}
+}
