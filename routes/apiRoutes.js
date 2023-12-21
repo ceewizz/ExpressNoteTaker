@@ -16,22 +16,21 @@ module.exports = (app) => {
 
     app.post('api/notes', (req, res) => {
         let db = fs.readFileSync('./db/db.json');
-        db = JSON.parse(db);
-        res.json(db);
-
+        if (error) throw error;
+        let dbData = JSON.parse(data);
+        res.json(dbData);
+, });
         // Create a new note
-        let userNote = {
-            title: req.body.title,
-            text: req.body.text,
+          const userNote = req.body 
+          userNote.id = uniqid()
             // The note create
             id: uniqid(),
-        };
-
+    };
         // Push created note over to db.json file
         db.push(userNote);
         fs.writeFileSync('./db/db.json', JSON.stringify(db));
         res.json(db);
-        });
+        
 
         // When using Delete the api notes should get the param to delete a certain name in the note.
         app.delete('/api/notes/:id', (req, res) => {
@@ -48,4 +47,4 @@ module.exports = (app) => {
 
         })
 
-    };
+    ;
