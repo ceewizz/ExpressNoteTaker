@@ -30,4 +30,6 @@ Node.js Express.js.
 
 Credits:
 Github repo: https://github.com/ceewizz/ExpressNoteTaker
-Heroku deploy: https://git.heroku.com/expressnotetakerchrish.git
+Heroku deploy: https://expressnotetakerchrish-c4338309d099.herokuapp.com/ 
+
+ https://git.heroku.com/expressnotetakerchrish.git

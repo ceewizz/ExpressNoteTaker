@@ -10,9 +10,6 @@ const PORT = process.env.PORT || 3001
 const db = require('./db/db.json')
 
 
-
-
-
 // use express to create the route to file in the public folder and give it a route.
 app.use(express.static('public'));
 
@@ -27,12 +24,14 @@ var uniqid = require('uniqid');
     // A new note is created, then add it to the db.json file which then 
     // returns to the user.
 
-    app.post('api/notes', (req, res) => {
-        let db = fs.readFileSync('./db/db.json');
+    app.get('api/notes', (req, res) => {
+        let db = fs.readFileSync('./db/db.json', (err, data) => {
         if (error) throw error;
         let dbData = JSON.parse(data);
         res.json(dbData);
  });
+})
+
 
  app.post('/api/notes', (req, res) => {
 
@@ -56,30 +55,28 @@ var uniqid = require('uniqid');
                // removing the name of the file
             const deleteNotes  =  db.filter(item => item.id !== req.params.id);
 
-         
-
 
             // Then write the new notes to the db.json file
             fs.writeFileSync('./db/db.json', JSON.stringify(deleteNotes));
-            res.json(deleteNotes);
+            readFile.json(deleteNotes)
 
         })
 
     
 
-    app.get('api/notes', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    });
+    app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', 'index.html'))
+    })
 
         
-    app.get('api/notes', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public', 'notes,html'));
-    });
+    app.get('/notes', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', 'notes,html'))
+    })
 
     
     // * return the index.html file
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public', 'index.html'));
+        res.sendFile(path.join(__dirname, 'public', 'index.html'))
     })
 
 
@@ -87,8 +84,8 @@ var uniqid = require('uniqid');
 
 // create to start server
 
-app.listen(PORT, () => {
-    console.log(`Server available at localhost:${PORT}`);
+app.listen(PORT, () => 
+    console.log(`Server at localhost:${PORT}`))
 
 
-})
+
