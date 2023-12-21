@@ -25,7 +25,7 @@ const uniqid = require('uniqid');
     // returns to the user.
 
     app.get('/api/notes', (req, res) => {
-        let db = fs.readFileSync('./db/db.json', (err, data) => {
+        fs.readFileSync('./db/db.json', (err, data) => {
         if (err) throw err;
         let dbData = JSON.parse(data);
         res.json(dbData);
