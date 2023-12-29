@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 // uses express
 const app = express();
-
+const dbFilePath = path.join(__dirname, 'db/db.json'); 
 // creating port
 const PORT = process.env.PORT || 3001
 const db = require('./db/db.json')
@@ -25,12 +25,9 @@ const uniqid = require('uniqid');
     // returns to the user.
 
     app.get('/api/notes', (req, res) => {
-        fs.readFileSync('./db/db.json', (err, data) => {
-        if (err) throw err;
-        let dbData = JSON.parse(data);
-        res.json(dbData);
- });
-})
+        const notes = JSON.parse(fs.readFileSync(dbFilePath, 'utf8')); res.json(notes); });
+   
+
 
 
  app.post('/api/notes', (req, res) => {
